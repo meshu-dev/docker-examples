@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Include functions from bash file
+source functions
+
+# Run command with all arguments
+if [ "_$1" = "_" ]; then
+    help
+else
+    $@
+fi

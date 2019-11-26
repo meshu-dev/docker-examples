@@ -1,0 +1,56 @@
+#!/bin/bash
+
+function setup_network() {
+	docker network create dev-network
+}
+
+function init() {
+	#docker network inspect dev-network &>/dev/null || docker network create dev-network
+
+	CURRENT_DIR=$(pwd)
+
+    cd $CURRENT_DIR/reverse-proxy && docker-compose up -d
+
+    echo "Reverse proxy service is now running...\n"
+}
+
+function dc() {
+	CURRENT_DIR=$(pwd)
+
+    # Start up site container/s if site name is passed as arguement
+	if [ ! -z ${1} ]; then
+		SITE_DIR="$CURRENT_DIR/services/$1"
+
+		echo $SITE_DIR
+		echo "${@:2}"
+
+		if [ -d $SITE_DIR ]; then
+			cd $SITE_DIR && docker-compose "${@:2}"
+		fi
+	fi
+}
+
+function destroy() {
+	COMMAND=$1
+
+	# Stop and remove all containers
+	docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
+
+	# Remove all images
+    if [[ $COMMAND == "all" ]]; then
+        docker rmi $(docker images -a -q)
+	fi
+}
+
+function help() {
+    read -r -d '' FUNCTION_LIST <<- EOM
+		The following functions are available for you to use...
+
+		  setup_network
+		  init
+		  dc [service] [docker-compose command]
+		  destroy ["all"]
+	EOM
+
+	echo "$FUNCTION_LIST"
+}

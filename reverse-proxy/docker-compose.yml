@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  reverse-proxy:
+    image: jwilder/nginx-proxy
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    external: true
