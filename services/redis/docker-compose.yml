@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  redis:
+    build: ./redis
+    ports:
+      - 6379:6379
+    restart: always
+    networks:
+      - dev-network
+    environment:
+      - VIRTUAL_HOST=redis.docker
+
+networks:
+  dev-network:
+    external: true

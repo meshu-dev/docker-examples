@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  adminer:
+    build: .
+    restart: always
+    environment:
+      VIRTUAL_HOST: adminer.docker
+      ADMINER_DEFAULT_SERVER: mysql
+      ADMINER_DESIGN: konya
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    external: true

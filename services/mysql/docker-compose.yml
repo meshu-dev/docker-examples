@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    env_file:
+      - ./.env
+    environment:
+      VIRTUAL_HOST: ${MYSQL_HOST}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - ./dumps:/docker-entrypoint-initdb.d
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    external: true
