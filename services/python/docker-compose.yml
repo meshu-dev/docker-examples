@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  python:
+    build: ./flask
+    restart: always
+    environment:
+      VIRTUAL_HOST: flask.docker
+    expose:
+      - 5000
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    external: true

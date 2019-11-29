@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  maildev:
+    image: djfarrelly/maildev
+    environment:
+      VIRTUAL_HOST: maildev.docker
+    ports:
+      - 25:25
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    external: true
