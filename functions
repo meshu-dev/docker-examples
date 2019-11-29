@@ -14,7 +14,7 @@ function init() {
     echo "Reverse proxy service is now running...\n"
 }
 
-function dc() {
+function service() {
 	CURRENT_DIR=$(pwd)
 
     # Start up site container/s if site name is passed as arguement
@@ -48,7 +48,7 @@ function help() {
 
 		  setup_network
 		  init
-		  dc [service] [docker-compose command]
+		  service [name] [docker-compose command]
 		  destroy ["all"]
 	EOM
 
