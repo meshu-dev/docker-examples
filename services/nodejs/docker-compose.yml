@@ -2,7 +2,7 @@ version: "3"
 
 services:
   nodejs:
-    image: node:latest
+    build: .
     restart: always
     environment:
       VIRTUAL_HOST: nodejs.docker
@@ -12,6 +12,7 @@ services:
       - 8080
     volumes:
       - ./src:/srv
+      - /srv/node_modules
     networks:
       - dev-network
 
