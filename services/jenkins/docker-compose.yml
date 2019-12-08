@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    restart: always
+    environment:
+      VIRTUAL_HOST: jenkins.docker
+    ports:
+      - 8080:8080
+    volumes:
+      - ./data:/var/jenkins_home
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    external: true
