@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  maildev:
+    image: mailhog/mailhog
+    environment:
+      VIRTUAL_HOST: mailhog.docker
+    ports:
+      - 1025:1025
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    external: true
