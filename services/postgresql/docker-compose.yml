@@ -5,6 +5,7 @@ services:
     image: postgres
     restart: always
     environment:
+      VIRTUAL_HOST: postgres.docker
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
