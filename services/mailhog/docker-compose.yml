@@ -6,6 +6,7 @@ services:
     environment:
       VIRTUAL_HOST: mailhog.docker
     ports:
+      - 8025:8025
       - 1025:1025
     networks:
       - dev-network
