@@ -1,0 +1,14 @@
+##
+# Docker Examples
+##
+127.0.0.1 adminer.docker
+127.0.0.1 flask.docker
+127.0.0.1 graphql.docker
+127.0.0.1 jenkins.docker
+127.0.0.1 maildev.docker
+127.0.0.1 mailhog.docker
+127.0.0.1 mongodb.docker
+127.0.0.1 mysql.docker
+127.0.0.1 nodejs.docker
+127.0.0.1 redis.docker
+127.0.0.1 vueui.docker
